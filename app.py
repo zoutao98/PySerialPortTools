@@ -1,30 +1,23 @@
-from PySide2.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton
-from PySide2.QtCore import QUrl
-from PySide2.QtUiTools import QUiLoader
-from PySide2.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings
-
+from threading import Thread
 import app_logging
-from main_view import Ui_MainWindow
+
+from app_instance import application, appWindow
+from serial_port_thread import start_serial_port
 
 log = app_logging.getLogger("app")
 
 showStr = ["button", "ddd"]
 
-def handleClick():
-    log.info("click")
-
-class AppWindow(QMainWindow, Ui_MainWindow):
-
-    def __init__(self):
-        super().__init__()
-        self.setupUi(self)
+def btn_click():
+    def thread_func():
+        log.info("btn_click")
+        appWindow.show_statusbar.emit("thread call")
+    thread1 = Thread(target=thread_func, name="SerialThread")
+    
+    thread1.start()
 
 if __name__ == '__main__':
-    app = QApplication()
-
-    appWindow = AppWindow()
+    appWindow.btn_click_singl.connect(btn_click)
+    start_serial_port()
     appWindow.show()
-    # qtWebBrowser = QWebEngineView()
-    # qtWebBrowser.load(QUrl("http://www.baidu.com"))
-    # qtWebBrowser.show()
-    app.exec_()
+    application.exec_()
