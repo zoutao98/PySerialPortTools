@@ -21,6 +21,5 @@ from serial_port_thread import start_serial_port
 log = app_logging.getLogger("app")
 
 if __name__ == '__main__':
-    start_serial_port()
     appWindow.show()
     application.exec_()

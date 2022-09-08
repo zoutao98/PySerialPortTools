@@ -14,7 +14,6 @@
 
 import asyncio
 from threading import Thread
-
 import serial_asyncio
 
 from app_instance import appWindow
@@ -34,8 +33,6 @@ class SerialPortProtocol(asyncio.Protocol):
     def data_received(self, data):
         log.info(data)
         appWindow.show_txt_on_edit_signal.emit(data.decode('utf-8'))
-
-
 
 
 def serial_thread_loop_task(loop):

@@ -28,8 +28,16 @@ class Ui_MainWindow(object):
 
         self.formLayout.setWidget(1, QFormLayout.FieldRole, self.textEdit)
 
+        self.comboBox = QComboBox(self.centralwidget)
+        self.comboBox.setObjectName(u"comboBox")
+
+        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.comboBox)
+
         self.pushButton = QPushButton(self.centralwidget)
         self.pushButton.setObjectName(u"pushButton")
+        font = QFont()
+        font.setKerning(True)
+        self.pushButton.setFont(font)
 
         self.formLayout.setWidget(0, QFormLayout.LabelRole, self.pushButton)
 
@@ -59,7 +67,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Py", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"\u6253\u5f00\u4e32\u53e3", None))
         self.menu.setTitle(QCoreApplication.translate("MainWindow", u"\u4e32\u53e3", None))
         self.menu_2.setTitle(QCoreApplication.translate("MainWindow", u"\u8bbe\u7f6e", None))
         self.menu_3.setTitle(QCoreApplication.translate("MainWindow", u"\u5173\u4e8e", None))

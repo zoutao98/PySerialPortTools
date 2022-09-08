@@ -38,13 +38,20 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.textEdit.setReadOnly(True)
         self.show_txt_on_edit_signal.connect(self.showTxtOnTextEdit)
 
+
+        self.comboBox.addItem("hello")
+        self.comboBox.addItem("hellll")
     def handleClick(self):
         log.info("click")
         self.btn_click_signal.emit()
+    
+    def handleComboBoxClick(self):
+        log.debug("ComboBox Clicked")
 
     def showMessageOnStatusBar(self, message):
         self.statusbar.showMessage(message)
     
+
     def showTxtOnTextEdit(self, txt):
         # tc = self.textEdit.textCursor()
         # tc.movePosition(QTextCursor.End)
