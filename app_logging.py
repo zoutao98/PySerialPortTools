@@ -17,7 +17,7 @@ import logging
 def getLogger(name) -> logging.Logger:
 
     log = logging.getLogger(name)
-    LOG_FORMAT = "%(asctime)s %(threadName)s %(levelname)s %(name)s - %(message)s"
+    LOG_FORMAT = "%(asctime)s %(threadName)s %(name)s %(levelname)s - %(message)s"
     log.setLevel(logging.DEBUG)
 
     file_handler = logging.FileHandler('app.log', 'a', encoding='utf-8')

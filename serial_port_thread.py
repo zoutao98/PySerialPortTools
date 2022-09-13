@@ -65,5 +65,8 @@ def start_serial_port():
         # _serail_thread = Thread(name="SerialThread", target=serial_thread_func)
         # _log.debug(_serail_thread.is_alive())
         # _serail_thread.start()
+    else:
+        appWindow.show_msg_on_notice_signal.emit("please select serial port !")
+        appWindow.show_msg_on_statusbar_signal.emit("please select serial port !", 0)
 
 appWindow.btn_click_signal.connect(start_serial_port)
