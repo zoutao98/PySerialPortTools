@@ -60,11 +60,13 @@ def start_serial_port():
     if (len(app_instance.port_list) > 0) and (appWindow.comboBox.currentIndex() > 0):
         global __port_name
         __port_name = app_instance.port_list[appWindow.comboBox.currentIndex() - 1].name
-        _log.debug(__port_name)
         appWindow.btn_change_signal.emit()
-        # _serail_thread = Thread(name="SerialThread", target=serial_thread_func)
-        # _log.debug(_serail_thread.is_alive())
-        # _serail_thread.start()
+        _serail_thread = Thread(name="SerialThread", target=serial_thread_func)
+        
+        _log.debug(_serail_thread)
+        _serail_thread.start()
+        
+        _log.debug(_serail_thread)
     else:
         appWindow.show_msg_on_notice_signal.emit("please select serial port !")
         appWindow.show_msg_on_statusbar_signal.emit("please select serial port !", 0)
